@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rolsa Technologies</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Link to our main CSS file -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Extra styling for the homepage -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+    <script src="{% static 'js/calculator.js' %}" defer></script>
+    <!-- Google font for a more readable experience -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Accessibility Icon - Just click to open the panel -->
+    <div class="accessibility-icon" onclick="toggleAccessibilityPanel()">
+        <img src="{% static 'images/accessibility-icon.png' %}" alt="Accessibility" class="accessibility-img">
+    </div>
+
+    <!-- Accessibility Panel - Simple options to adjust how the site looks -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <h3>Accessibility Options</h3>
+        <button onclick="toggleHighContrast()">High Contrast</button>
+        <button onclick="increaseFontSize()">Increase Font Size</button>
+        <button onclick="decreaseFontSize()">Decrease Font Size</button>
+        <button onclick="toggleDyslexiaFont()">Dyslexia Font</button>
+        <button onclick="resetAccessibility()">Reset</button>
+    </div>
+
+    <!-- Navigation Bar - Keeps the links at the top of the page -->
+    <header class="navbar">
+        <div class="logo-container">
+            <!-- Company logo and name -->
+            <img src="{% static 'images/logo.png' %}" alt="Rolsa Technologies" class="logo">
+            <span class="logo-text">Rolsa Technologies</span>
+        </div>
+        <div class="nav-toggle">&#9776;</div>
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'products' %}">Products</a>
+            <a href="{% url 'green_energy' %}">Green Energy Info</a>
+            <a href="{% url 'carbon_calculator' %}">Carbon Calculator</a>
+            <a href="{% url 'contact' %}">Contact Us</a>
+            <a href="{% url 'booking' %}">Booking</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'logout' %}" class="log-out-btn">Log Out</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="sign-in-btn">Sign In</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Main content goes here -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer with some basic info and links -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Basic company info -->
+            <div class="footer-section">
+                <h4>Rolsa Technologies</h4>
+                <p>123 Green Energy Way</p>
+                <p>Greenshire, GR3 3NN</p>
+                <p>Energy Kingdom</p>
+            </div>
+            <!-- Quick links for easier navigation -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">About Us</a></li>
+                    <li><a href="{% url 'green_energy' %}">Learn more</a></li>
+                    <li><a href="{% url 'products' %}">Products</a></li>
+                    <li><a href="{% url 'carbon_calculator' %}">Carbon Calculator</a></li>
+                </ul>
+            </div>
+            <!-- Highlighted products -->
+            <div class="footer-section">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Solar Panels</a></li>
+                    <li><a href="#">EV Charging Stations</a></li>
+                    <li><a href="#">Smart Energy Systems</a></li>
+                </ul>
+            </div>
+            <!-- Social media links -->
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook" class="social-icon"></a>
+                    <a href="#"><img src="{% static 'images/twitter.png' %}" alt="Twitter" class="social-icon"></a>
+                    <a href="#"><img src="{% static 'images/instagram.png' %}" alt="Instagram" class="social-icon"></a>
+                    <a href="#"><img src="{% static 'images/linkedin.png' %}" alt="LinkedIn" class="social-icon"></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2025 Rolsa Technologies. All Rights Reserved.</p>
+    </footer>
+    <!-- Main JavaScript file -->
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
