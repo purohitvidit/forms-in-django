@@ -1,0 +1,131 @@
+:root {
+    --blue-ncs: #1e88c5ff;
+    --jonquil: #ffcc00ff;
+    --davys-gray: #595959ff;
+    --isabelline: #f5f1ecff;
+    --white: #ffffffff;
+    --black: #000000ff;
+    --pigment-green: #4ca850ff;
+}
+
+
+.section {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--davys-gray);
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    
+}
+
+.page-title {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.map-container {
+    width: 50%;
+    background-color: var(--isabelline);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--blue-ncs);
+    color: var(--white);
+}
+
+.contact-form-container {
+    width: 45%;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.contact-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+
+.form-row input {
+    flex: 1;
+}
+
+.contact-form-container textarea {
+    height: 150px;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+/* Consolidated button styling using brand colors */
+.btn {
+    width: 100%; /* Full-width button for better usability */
+    padding: 12px;
+    margin: 10px 0;
+    background-color: var(--jonquil); /* Solid brand color */
+    color: var(--davys-gray); /* Dark text for contrast */
+    border: none;
+    border-radius: 20px; /* Rounded edges */
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--blue-ncs); /* Hover state using brand blue */
+    color: var(--white);
+    transform: scale(1.02);
+}
+
+@media screen and (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .map-container, 
+    .contact-form-container {
+        width: 100%;
+    }
+}
